@@ -1,0 +1,28 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: secure-service
+  labels:
+    app: secure-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: secure-service
+  template:
+    metadata:
+      labels:
+        app: secure-service
+    spec:
+      containers:
+        - name: secure-container
+          image: busybox
+          command: ["sh", "-c", "echo 'Writing to file' > /data/testfile && sleep 3600"]
+          volumeMounts:
+            - name: data-volume
+              mountPath: /data
+              readOnly: true
+      volumes:
+        - name: data-volume
+          emptyDir: {}

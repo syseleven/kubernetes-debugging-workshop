@@ -1,0 +1,32 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customer-app
+  labels:
+    app: customer-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: customer-app
+  template:
+    metadata:
+      labels:
+        app: customer-app
+    spec:
+      containers:
+        - name: customer-container
+          image: nginx:nonexistent-version
+          ports:
+            - containerPort: 80
+          env:
+            - name: CONFIG_PATH
+              value: "/etc/config/app-settings.yaml"
+          volumeMounts:
+            - name: config-volume
+              mountPath: /etc/config
+      volumes:
+        - name: config-volume
+          configMap:
+            name: customer-config

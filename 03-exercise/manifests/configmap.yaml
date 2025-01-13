@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: application-settings
+data:
+  app-config.yaml: |
+    server:
+      port: 8080
+    database:
+      host: localhost
+      port: 5432

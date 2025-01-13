@@ -1,0 +1,34 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-service
+  labels:
+    app: api-service
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: api-service
+  template:
+    metadata:
+      labels:
+        app: api-service
+    spec:
+      containers:
+        - name: api-container
+          image: busybox
+          command: ["sh", "-c", "cat /etc/config/config.yaml && echo DB_PASSWORD=$DB_PASSWORD && sleep 3600"]
+          volumeMounts:
+            - name: config-volume
+              mountPath: /etc/config
+          env:
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: db-credentials
+                  key: password
+      volumes:
+        - name: config-volume
+          configMap:
+            name: api-config

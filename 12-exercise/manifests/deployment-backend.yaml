@@ -1,0 +1,38 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  labels:
+    app: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      initContainers:
+        - name: init-container
+          image: busybox
+          command: ["sh", "-c", "if [ \"$DEPENDENCY_READY\" != \"true\" ]; then echo 'DEPENDENCY_READY not set'; exit 1; fi; sleep 5"]
+          env:
+            - name: "DEPENDENCY_READY"
+              value: "0"
+      containers:
+        - name: backend-container
+          image: hashicorp/http-echo
+          args:
+            - "-text=Hello from Backend"
+            - "-listen=:8080"
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 2
+            periodSeconds: 5

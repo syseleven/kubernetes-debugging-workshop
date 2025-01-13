@@ -1,0 +1,10 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: api-settings
+data:
+  config.yaml: |
+    server:
+      port: 8080
+    logLevel: debug

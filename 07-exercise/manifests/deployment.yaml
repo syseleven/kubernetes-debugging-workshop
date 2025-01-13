@@ -1,0 +1,36 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: probe-service
+  labels:
+    app: probe-service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: probe-service
+  template:
+    metadata:
+      labels:
+        app: probe-service
+    spec:
+      containers:
+        - name: probe-service-container
+          image: busybox
+          command: ["sh", "-c", "while true; do echo 'alive' > /tmp/health; sleep 10; done"]
+          livenessProbe:
+            exec:
+              command:
+                - cat
+                - /tmp/health
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          readinessProbe:
+            exec:
+              command:
+                - grep
+                - 'ready'
+                - /tmp/health
+            initialDelaySeconds: 5
+            periodSeconds: 5

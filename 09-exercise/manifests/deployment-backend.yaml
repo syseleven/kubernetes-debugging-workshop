@@ -1,0 +1,25 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-service
+  labels:
+    app: backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend-container
+          image: hashicorp/http-echo
+          args:
+            - "-text=Hello from Backend"
+            - "-listen=:8080" # Expose the backend on port 8080
+          ports:
+            - containerPort: 8080

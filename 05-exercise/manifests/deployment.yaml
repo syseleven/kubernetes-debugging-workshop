@@ -1,0 +1,32 @@
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payment-service
+  labels:
+    app: payment-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: payment-service
+  template:
+    metadata:
+      labels:
+        app: payment-service
+    spec:
+      containers:
+        - name: payment-service-container
+          image: busybox
+          command: ["sh", "-c", "if [ -z \"$PAYMENT_GATEWAY_URL\" ]; then echo 'Missing PAYMENT_GATEWAY_URL'; exit 1; fi; sleep 10"]
+          env:
+            - name: PAYMENT_GATEWAY_URL
+              value: ""
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
