@@ -26,6 +26,12 @@ An application is deployed across two namespaces: frontend and backend. The fron
      kubectl get ingress -n <yourname>-exercise14-frontend
      ```
    - Inspect logs, network policies, and routing configurations for issues.
+   - Try reaching the ingress:
+     ```bash
+     # first get ip of ingress LB, 
+     # e.g. `kubectl get svc -n ingress-nginx ingress-nginx-controller`
+     curl <ingress-controller-ip> -H "Host: frontend-app.local"
+     ```
 
 3. **Fix the issues:**
    - Resolve the network isolation issue between namespaces.

@@ -20,6 +20,12 @@ A new version of an application is being rolled out, but several issues prevent 
 2. **Investigate the issues:**
    - Check the status of the deployment, pods, service, and ingress.
    - Investigate events, logs, and resource configurations to identify the problems.
+   - Try reaching the ingress:
+     ```bash
+     # first get ip of ingress LB, 
+     # e.g. `kubectl get svc -n ingress-nginx ingress-nginx-controller`
+     curl <ingress-controller-ip> -H "Host: customer-app.local"
+     ```
 
 3. **Fix the issues:**
    - Resolve all the problems to ensure the application is functional and accessible.

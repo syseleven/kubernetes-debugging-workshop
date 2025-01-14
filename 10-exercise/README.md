@@ -26,6 +26,8 @@ A web application is not accessible through its Ingress resource. Investigate an
      ```
    - Try reaching the ingress:
      ```bash
+     # first get ip of ingress LB, 
+     # e.g. `kubectl get svc -n ingress-nginx ingress-nginx-controller`
      curl <ingress-controller-ip> -H "Host: web-app.local"
      ```
    - Describe the ingress and check for any misconfigurations:
