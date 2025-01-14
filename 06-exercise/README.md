@@ -37,7 +37,7 @@ An application is failing after a short time of running. Investigate and identif
      ```
 
 3. **Fix the issue:**
-   - Identify and modify the resource requests and limits in the deployment manifest as necessary.
+   - Identify the issue and modify the manifests as necessary.
    - Reapply the changes and monitor the performance to ensure the issue is resolved.
 
 ## Cleanup
