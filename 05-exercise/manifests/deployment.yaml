@@ -19,7 +19,7 @@ spec:
       containers:
         - name: payment-service-container
           image: busybox
-          command: ["sh", "-c", "if [ -z \"$PAYMENT_GATEWAY_URL\" ]; then echo 'Missing PAYMENT_GATEWAY_URL'; exit 1; fi; sleep 10"]
+          command: ["sh", "-c", "if [ -z \"$PAYMENT_GATEWAY_URL\" ]; then echo 'Missing PAYMENT_GATEWAY_URL'; exit 1; fi; sleep 3600"]
           env:
             - name: PAYMENT_GATEWAY_URL
               value: ""
