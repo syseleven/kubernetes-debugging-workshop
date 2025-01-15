@@ -31,6 +31,7 @@ A new version of an application is being rolled out, but several issues prevent 
    - Resolve all the problems to ensure the application is functional and accessible.
 
 4. **Test the application:**
+   - All pods should be running and in a healthy state.
    - Verify that the application is reachable via the specified ingress.
 
 ## Cleanup

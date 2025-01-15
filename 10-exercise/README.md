@@ -41,7 +41,7 @@ A web application is not accessible through its Ingress resource. Investigate an
 
 3. **Fix the issue:**
    - Identify and resolve the root cause of the misconfiguration.
-   - Verify the application is accessible.
+   - Verify the application is accessible through the ingress resource.
 
 ## Cleanup
 

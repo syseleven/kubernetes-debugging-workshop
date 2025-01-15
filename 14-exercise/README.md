@@ -38,7 +38,8 @@ An application is deployed across two namespaces: frontend and backend. The fron
    - Fix the ingress routing problem to allow external access to the frontend.
 
 4. **Test the application:**
-   - Verify that the frontend communicates with the backend and that the application is accessible externally.
+   - All pods should be running and in a healthy state.
+   - Verify that the frontend communicates with the backend and that the application is accessible externally via the ingress.
 
 ## Cleanup
 

@@ -36,6 +36,7 @@ A multi-service application consists of a frontend, backend, and database. Users
    - Ensure all services are functional and communicate correctly.
 
 4. **Test the application:**
+   - All pods should be running and in a healthy state.
    - Verify that users can access the application via the frontend and that all service dependencies are working.
 
 ## Cleanup
