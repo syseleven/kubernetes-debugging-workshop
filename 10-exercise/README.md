@@ -12,6 +12,7 @@ A web application is not accessible through its Ingress resource. Investigate an
      kubectl create namespace <yourname>-exercise10
      kubectl config set-context --current --namespace=<yourname>-exercise10
      ```
+   - Edit the ingress ressource in `manifests/ingress.yaml` and replace `YOURNAME` to distinguish from others
    - Deploy the manifests:
      ```bash
      kubectl apply -f manifests/

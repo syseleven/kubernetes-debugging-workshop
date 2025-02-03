@@ -8,7 +8,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: frontend-app.local
+    - host: YOURNAME-frontend-app.local # replace YOURNAME
       http:
         paths:
           - path: /
