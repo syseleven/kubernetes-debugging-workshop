@@ -12,6 +12,7 @@ An application is deployed across two namespaces: frontend and backend. The fron
      kubectl create namespace <yourname>-exercise14-frontend
      kubectl create namespace <yourname>-exercise14-backend
      ```
+   - Edit the ingress ressource in `manifests/frontend/ingress.yaml` and replace `YOURNAME` to distinguish from others
    - Deploy the manifests:
      ```bash
      kubectl apply -n <yourname>-exercise14-backend -f manifests/backend/

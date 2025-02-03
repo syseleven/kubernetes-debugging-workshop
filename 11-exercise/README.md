@@ -12,6 +12,7 @@ A new version of an application is being rolled out, but several issues prevent 
      kubectl create namespace <yourname>-exercise11
      kubectl config set-context --current --namespace=<yourname>-exercise11
      ```
+   - Edit the ingress ressource in `manifests/ingress.yaml` and replace `YOURNAME` to distinguish from others
    - Deploy the manifests:
      ```bash
      kubectl apply -f manifests/

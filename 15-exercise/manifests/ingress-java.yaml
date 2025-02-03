@@ -1,20 +1,17 @@
----
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: frontend-ingress
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+  name: java-web-app-ingress
 spec:
   ingressClassName: nginx
   rules:
-    - host: YOURNAME-frontend-app.local # replace YOURNAME
+    - host: YOURNAME-java-web-app.local # replace YOURNAME
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: frontend-service
+                name: java-web-app-service
                 port:
                   number: 8080
